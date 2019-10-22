@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great&display=swap" rel="stylesheet">
+	<title>실습1</title>
+	<style type="text/css">
+		body{background: white;}
+		.rain{width: 3px; 
+			height: 6px; 
+			background: black;
+			position: absolute;
+			animation: rr 10s infinite ease-in;}
+
+		@keyframes rr{
+			from{bottom: 1000px;}
+			to{bottom:0px;}
+		}
+		@keyframes mmm{to{opacity: 0}}
+
+		#pre{opacity: 1;}
+
+		h1{font-family: 'Fredericka the Great', cursive;
+			color: #222;
+			letter-spacing: 0.08em;
+			position: absolute;
+			transform: translate(-50%, 0%);
+			left: 50%;
+			top: 18%;
+			font-size: 5em;
+			margin:0;}
+		p{position: absolute;
+			text-align: center;
+			transform: translate(-50%, 0%);
+			left: 50%;
+			bottom: 10%;
+			line-height: 2em;}	
+
+		h1:hover {color: rgb(0,255,255);}
+
+	</style>
+</head>
+<body>	
+	<div id="pre">
+		<h1 id="but1">start</h1>
+		<p>◀ &nbsp; 방향키 &nbsp; ▶</p>
+	</div>
+	<audio src="music.mp3" id="mu"></audio>
+	<img src="cat.gif" id="messenger" style="position: absolute; width: 200px; bottom: 5px; z-index: 80; display: none;">
+
+	<div id="tBox" style="width: 13500px;">
+		<div class="rain" id="rrr"></div>
+	</div>
+
+	<script type="text/javascript">
+		for(var i=0; i<300; i++){
+			var tt = rrr.cloneNode(true);
+			tt.id = i;
+			tt.style.left = Math.random()*8000 + "px";
+			tt.style.animationDuration = a(15) + "s";
+			document.body.appendChild(tt);
+		}
+
+		function a(num){
+			var cc = Math.random()*num;
+			return cc
+		}
+
+		but1.onclick = function(){
+			mu.play();
+			pre.style.animation = "mmm 1s forwards";
+			messenger.style.display = "block";
+			tt.style.background = "yellow";
+			}
+
+		//keyMove = game.input.keyboard.createCursorKeys();
+    	//keyMove = game.input.keyboard.createCursorKeys(); 
+
+    	//var mX = window.pageXOffset + 100;
+    	//whole.appendChild(messenger);
+
+    	//window.onscroll = function(){
+			//mX = Math.floor(window.scrollX / scrollRatio)+window.scrollX -65;
+			//messenger.style.left = mX+"px";
+		//}
+
+		$(document).keypress(function(event){
+    		var key = event.keyCode;
+    		var box = $box.offset();
+    		var cl = box.left;
+    		var ct = box.top;
+
+    		if(key==37){
+    		//왼쪽
+            cl-=10;
+    		$box.css("left",cl+"px"); 
+    		}else if(key==39){
+    		//오른쪽    
+            cl+=10;
+    		$box.css("left",cl+"px");
+    		}
+			});
+
+	</script>
+</body>
+</html>
